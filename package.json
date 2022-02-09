@@ -1,0 +1,19 @@
+{
+  "name": "sti-backend",
+  "version": "1.0.0",
+  "description": "backend for JS and webservices course",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalle-Rei/sti-backend.git"
+  },
+  "author": "Karl Reithmeier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kalle-Rei/sti-backend/issues"
+  },
+  "homepage": "https://github.com/Kalle-Rei/sti-backend#readme"
+}
