@@ -21,22 +21,22 @@ app.get("/hypnosismic", (req, res) => {
     {
       name: "Matenro",
       location: "Shinjuku",
-      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/a/ac/Logo_shinjuku_color.png/revision/latest/scale-to-width-down/400?cb=20181018051923"
+      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/a/ac/Logo_shinjuku_color.png"
     },
     {
       name: "Fling Posse",
       location: "Shibuya",
-      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/7/7c/Logo_shibuya_color2.png/revision/latest/scale-to-width-down/400?cb=20181213235306"
+      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/7/7c/Logo_shibuya_color2.png"
     },
     {
       name: "Dotsuitare Hompo",
       location: "Osaka",
-      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/6/6a/Logo_osaka_color.png/revision/latest/scale-to-width-down/400?cb=20190907141838"
+      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/6/6a/Logo_osaka_color.png"
     },
     {
       name: "Party of Words",
       location: "Chuohku",
-      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/7/74/Chuoku.png/revision/latest/scale-to-width-down/400?cb=20200728094902"
+      logo: "https://static.wikia.nocookie.net/hypnosis-mic/images/7/74/Chuoku.png"
     },
   ];
 
