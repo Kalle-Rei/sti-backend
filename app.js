@@ -15,6 +15,35 @@ app.get("/", (req, res) => {
   res.status(200).send(body);
 });
 
+app.get("/hypnosismic", (req, res) => {
+  headers = { http_status: 200, "cache-control": "no-cache"};
+  body = [
+    {
+      name: "Matenro",
+      location: "Shinjuku",
+      logo: "/images/Logo_shinjuku_color.png"
+    },
+    {
+      name: "Fling Posse",
+      location: "Shibuya",
+      logo: "/images/Logo_shibuya_color2.png"
+    },
+    {
+      name: "Dotsuitare Hompo",
+      location: "Osaka",
+      logo: "/images/Logo_osaka_color.png"
+    },
+    {
+      name: "Party of Words",
+      location: "Chuohku",
+      logo: "/images/Chuoku.png"
+    },
+  ];
+
+  res.set("Content-Type", "application/json");
+  res.status(200).send(body);
+});
+
 app.get("/football", (req, res) => {
   headers = { http_status: 200, "cache-control": "no-cache" };
   body = [
