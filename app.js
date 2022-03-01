@@ -26,7 +26,7 @@ app.get("/registerscore", (req, res) => {
   res.status(200).send({"status":"success"});
 });
 
-app.get("/post", (req ,res)=>{
+app.get("/post", (req ,res) => {
   headers={"http_status":200, "cache-control":  "no-cache"}
   let user = req.body.user;
   let score = req.body.score;
@@ -34,12 +34,12 @@ app.get("/post", (req ,res)=>{
   res.status(200).send({"status":"success"});
 });
 
-app.get("/highscores", (req ,res)=>{
+app.get("/highscores", (req ,res) => {
   headers={"http_status":200, "cache-control":  "no-cache"};
   res.status(200).send(users);
 });
 
-app.post('/echo', (req, res) => {
+app.post("/echo", (req, res) => {
   console.log(JSON.stringify(req.body))
   res.status(200).send(req.body)
 });
