@@ -38,8 +38,8 @@ app.get("/registerscore", (req, res) => {
   if(users.length <= 5){ // hardcoded to only show the top 5 for now
     users.push(data);
   }
-  else if(score > users[users.length - 1].score){
-    users.splice((users.length - 1), 1);
+  else if(score > users[4].score){
+    users.splice(4, 1);
     users.push(data);
   }
   res.status(200).send({"status":"success"});
