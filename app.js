@@ -7,7 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const rug = require("random-username-generator");
 
-let users = {};
+// let users = {};
+let users = [];
 
 app.use(bodyParser.json());
 app.use("/healthcheck", require("./routes/healthcheck.routes"));
@@ -21,28 +22,44 @@ app.get("/", (req, res) => {
   res.status(200).send(body);
 });
 
+app.get("/highscores", (req ,res) => {
+  headers={"http_status":200, "cache-control":  "no-cache"};
+  users.sort((a, b) => b.score - a.score);
+  res.status(200).send(users);
+});
+
 app.get("/registerscore", (req, res) => {
   headers = {http_status: 200, "cache-control": "no-cache" };
   let user = req.query.user;
   let score = req.query.score;
-  users[user] = score;
+
+  let data = {"user": user, "score": score}
+  // users[user] = score;
+  if(users.length <= 5){ // hardcoded to only show the top 5 for now
+    users.push(data);
+  }
+  else if(score > users[users.length - 1].score){
+    users.splice((users.length - 1), 1);
+    users.push(data);
+  }
   res.status(200).send({"status":"success"});
 });
 
-app.post("/registerscore", (req ,res) => {
-  headers={"http_status":200, "cache-control":  "no-cache"}
-  let data = JSON.parse(req.body)
-  let user = data.user;
-  let score = data.score;
-  console.log(user + "->" + score)
-  users[user] = score;
-  res.status(200).send({"status":"success"});
+app.get('/auth', (req, res) => {
+  let user = rug.generate();
+  users[user] = 0;
+  res.status(200).send({"user":user});
 });
 
-app.get("/highscores", (req ,res) => {
-  headers={"http_status":200, "cache-control":  "no-cache"};
-  res.status(200).send(users);
-});
+// app.post("/registerscore", (req ,res) => {
+//   headers={"http_status":200, "cache-control":  "no-cache"}
+//   let data = JSON.parse(req.body)
+//   let user = data.user;
+//   let score = data.score;
+//   console.log(user + "->" + score)
+//   users[user] = score;
+//   res.status(200).send({"status":"success"});
+// });
 
 app.post("/echo", (req, res) => {
   console.log(JSON.stringify(req.body))
