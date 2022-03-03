@@ -1,7 +1,7 @@
 //app.js
 const cors = require("cors");
 const express = require("express");
-const bodyParser = require('body-parser')
+// const bodyParser = require('body-parser')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,7 +10,7 @@ const rug = require("random-username-generator");
 //let users = {};
 let users = [];
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use("/healthcheck", require("./routes/healthcheck.routes"));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -18,7 +18,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   headers = { http_status: 200, "cache-control": "no-cache" };
-  body = { status: "available" };
+  body = { "status": "available" };
   res.status(200).send(body);
 });
 
@@ -29,7 +29,7 @@ app.get("/highscores", (req ,res) => {
 });
 
 app.get("/registerscore", (req, res) => {
-  headers = {http_status: 200, "cache-control": "no-cache" };
+  headers = {"http_status": 200, "cache-control": "no-cache" };
   let user = req.query.user;
   let score = req.query.score;
 
@@ -61,10 +61,10 @@ app.get('/auth', (req, res) => {
 //   res.status(200).send({"status":"success"});
 // });
 
-app.post("/echo", (req, res) => {
-  console.log(JSON.stringify(req.body))
-  res.status(200).send(req.body)
-});
+// app.post("/echo", (req, res) => {
+//   console.log(JSON.stringify(req.body))
+//   res.status(200).send(req.body)
+// });
 
 app.listen(PORT, () => {
   console.log(`STARTED LISTENING ON PORT ${PORT}`);
