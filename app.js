@@ -7,8 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const rug = require("random-username-generator");
 
-// let users = {};
-let users = [];
+let users = {};
+//let users = [];
 
 app.use(bodyParser.json());
 app.use("/healthcheck", require("./routes/healthcheck.routes"));
