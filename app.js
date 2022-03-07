@@ -7,8 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const rug = require("random-username-generator");
 
-//let users = {};
 let users = [];
+let data = {};
 
 // app.use(bodyParser.json());
 app.use("/healthcheck", require("./routes/healthcheck.routes"));
@@ -23,22 +23,22 @@ app.get("/", (req, res) => {
 });
 
 app.get("/highscores", (req ,res) => {
-  headers={"http_status":200, "cache-control":  "no-cache"};
+  headers={"http_status": 200, "cache-control":  "no-cache"};
   users.sort((a, b) => b.score - a.score);
   res.status(200).send(users);
 });
 
 app.get("/registerscore", (req, res) => {
-  headers = {"http_status": 200, "cache-control": "no-cache" };
+  headers = {http_status: 200, "cache-control": "no-cache" };
   let user = req.query.user;
   let score = req.query.score;
 
-  let data = {"user": user, "score": score}
+  data = {"user": user, "score": score}
   // users[user] = score;
-  if(users.length <= 5){ // hardcoded to only show the top 5 for now
+  if(users.length < 5){ // hardcoded to only show the top 5 for now
     users.push(data);
   }
-  else if(score > users[4].score){
+  else if(users.length >= 5 && score > users[4].score){
     users.splice(4, 1);
     users.push(data);
   }
